@@ -124,8 +124,8 @@ arrows = plt.quiver(boids[:,0], boids[:,1], np.cos(boids[:,2]), np.sin(boids[:,2
 
 def animate(i):
     global boids, FPS, t, s
-    regle = i > FPS * t/3
-    # regle = True
+    regle = i > FPS * t/3 # la synchronisation des boids s'activent au bout d'un tiers de l'animation
+    # regle = True # décommenter cette ligne et commenter celle au dessus pour que les boids restent tout le temps synchronisé
     for boid in boids:
         if regle:
             boid = regles(boid)

@@ -96,6 +96,6 @@ def animate(i):
 
 anim = animation.FuncAnimation(
     fig, animate, init_func=init, frames=n, interval=dt, blit=True)
-anim.save('animation.mp4', fps=2, extra_args=['-vcodec', 'libx264'])
+# anim.save('animation.mp4', fps=2, extra_args=['-vcodec', 'libx264']) // uncomment to save the animation
 
 plt.show()

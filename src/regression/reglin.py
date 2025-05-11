@@ -7,15 +7,16 @@ from matplotlib import pyplot as plt
 ## 1. Dataset
 
 x, y = make_regression(n_samples=100, n_features=1, noise=10)
+y = y**2
+
 y = y.reshape(len(y), 1)
 x = x.reshape(len(x), 1)
-y = y.reshape(y.shape[0], 1)
 print(x.shape, y.shape)
 
-X = np.hstack((x, np.ones(x.shape)))
+X = np.hstack((x**2, x, np.ones(x.shape)))
 print(X.shape)
 
-theta = np.random.randn(2,1)
+theta = np.random.randn(3,1)
 print(theta.shape)
 
 ## 2. Model
@@ -24,7 +25,7 @@ def model(X, theta):
     return X.dot(theta)
 
 plt.scatter(x, y, label='y')
-plt.plot(x, model(X, theta), c='r', label='model')
+plt.scatter(x, model(X, theta), c='r', label='model')
 plt.title('Model against real data before training')
 plt.legend()
 plt.grid()
@@ -57,7 +58,7 @@ theta_final, cost_history = gradient_descent(X, y, theta, learning_rate, n_itera
 predictions = model(X, theta_final)
 
 plt.scatter(x, y, label='y')
-plt.plot(x, predictions, c='r', label='model')
+plt.scatter(x, predictions, c='r', label='model')
 plt.legend()
 plt.grid()
 plt.title('Model against real data after training')

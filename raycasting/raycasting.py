@@ -184,6 +184,8 @@ def draw_compass():
     line(RED, [cmps.x, cmps.y], [cmps.x + cos(p.orientation)*cmps.radius1, cmps.y + sin(p.orientation)*cmps.radius1], cmps.width)
 
 while running:
+    draw()
+    clock.tick(FPS)
     pygame.display.flip()
     
     pressed = pygame.key.get_pressed()
@@ -200,7 +202,4 @@ while running:
         if event.type == pygame.QUIT:
             running=False
             pygame.quit()
-            print("Fermeture du jeu")
-
-    draw()
-    clock.tick(FPS)
+            print("Game stopped.")
